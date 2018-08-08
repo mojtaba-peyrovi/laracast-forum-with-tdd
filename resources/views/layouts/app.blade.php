@@ -43,7 +43,7 @@
                         <li class="dropdown">
                           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Channels <span class="caret"></span></a>
                           <ul class="dropdown-menu">
-                            @foreach (App\Channel::all() as $channel)
+                            @foreach ($channels as $channel)
                                 <li><a href="/threads/{{ $channel->slug }}">
                                     {{ $channel->name }}
                                 </a></li>
@@ -55,6 +55,7 @@
 
                     <!-- Right Side Of Navbar -->
                     <ul class="nav navbar-nav navbar-right">
+
                         <!-- Authentication Links -->
                         @if (Auth::guest())
                             <li><a href="{{ route('login') }}">Login</a></li>
@@ -67,11 +68,13 @@
 
                                 <ul class="dropdown-menu" role="menu">
                                     <li>
+                                        <a href="/threads?by={{ auth()->user()->name }}" class="nav-link">My Threads</a>
                                         <a href="{{ route('logout') }}"
                                             onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                             Logout
                                         </a>
+
 
                                         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                             {{ csrf_field() }}

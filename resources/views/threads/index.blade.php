@@ -14,6 +14,13 @@
                                 <h4>{{ $thread->title }}</h4>
                             </a>
 
+                            <h6>Created By:
+                                <a href="#">
+                                    {{ $thread->creator->name}}
+                                </a>
+
+                            </h6>
+
 
                             <div class="body">
                                 {{ $thread->body }}
